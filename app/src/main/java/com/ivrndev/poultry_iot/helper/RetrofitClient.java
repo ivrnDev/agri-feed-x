@@ -1,4 +1,4 @@
-package com.ivrndev.poultry_iot;
+package com.ivrndev.poultry_iot.helper;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
