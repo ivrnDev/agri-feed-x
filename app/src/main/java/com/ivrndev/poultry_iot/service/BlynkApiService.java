@@ -4,7 +4,7 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
-public interface ApiService {
+public interface BlynkApiService {
     @GET("external/api/get")
     Call<Integer> getPinValue(
             @Query("token") String token,

@@ -6,8 +6,8 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.ivrndev.poultry_iot.RetrofitClient;
-import com.ivrndev.poultry_iot.service.ApiService;
+import com.ivrndev.poultry_iot.helper.RetrofitClient;
+import com.ivrndev.poultry_iot.service.BlynkApiService;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -15,7 +15,7 @@ import retrofit2.Response;
 
 public class HomeViewModel extends ViewModel {
     private final MutableLiveData<String> powerValue = new MutableLiveData<>();
-    private final ApiService apiService = RetrofitClient.getRetrofitInstance().create(ApiService.class);
+    private final BlynkApiService blynkApiService = RetrofitClient.getRetrofitInstance().create(BlynkApiService.class);
     private final String token = "-f79MI8QYI1PWyLqtSvh6NWJ5giBVA_N";
 
     public LiveData<String> getPowerValue() {
@@ -24,7 +24,7 @@ public class HomeViewModel extends ViewModel {
 
     // Fetch the current power state
     public void fetchCurrentPowerState() {
-        apiService.getPinValue(token, "V0").enqueue(new Callback<Integer>() {
+        blynkApiService.getPinValue(token, "V0").enqueue(new Callback<Integer>() {
             @Override
             public void onResponse(Call<Integer> call, Response<Integer> response) {
                 if (response.isSuccessful() && response.body() != null) {
@@ -45,7 +45,7 @@ public class HomeViewModel extends ViewModel {
         fetchCurrentPowerState();
         powerValue.observeForever(currentValue -> {
             String newValue = currentValue.equals("1") ? "0" : "1";
-            apiService.updatePinValue(token, "V0", newValue).enqueue(new Callback<Integer>() {
+            blynkApiService.updatePinValue(token, "V0", newValue).enqueue(new Callback<Integer>() {
                 @Override
                 public void onResponse(Call<Integer> call, Response<Integer> response) {
                     if (response.isSuccessful()) {
