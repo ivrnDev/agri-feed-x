@@ -10,15 +10,39 @@
         android:id="@+id/powerBtn"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginEnd="16dp"
         android:layout_marginBottom="88dp"
-        android:background="@drawable/circle_button"
+        android:background="@drawable/power_button_circular"
         android:scaleType="centerInside"
         android:src="@android:drawable/ic_lock_power_off"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.836"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.911" />
+        app:layout_constraintVertical_bias="0.929" />
 
+    <Button
+        android:id="@+id/refillBtn"
+        android:layout_width="121dp"
+        android:layout_height="239dp"
+        android:text="@string/refill_button"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:icon="@drawable/icon_refresh"
+        app:iconGravity="top"
+        app:iconPadding="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.622" />
 
+    <com.ekn.gruzer.gaugelibrary.HalfGauge
+        android:id="@+id/foodLevelSensor"
+        android:layout_width="293dp"
+        android:layout_height="273dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
