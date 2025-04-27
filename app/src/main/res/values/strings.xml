@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Poultry IoT</string>
+    <string name="app_name">AgriFeed X</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_customize">Customize</string>
