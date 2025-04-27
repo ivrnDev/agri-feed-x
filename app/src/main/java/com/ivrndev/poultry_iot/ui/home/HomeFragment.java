@@ -1,5 +1,6 @@
 package com.ivrndev.poultry_iot.ui.home;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -27,9 +29,9 @@ public class HomeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-//        observePowerValue(homeViewModel);
+        observePowerValue(homeViewModel);
         setupListener(homeViewModel);
-//        setupFoodLevel();
+        setupFoodLevel();
 
         return root;
     }
@@ -69,23 +71,23 @@ public class HomeFragment extends Fragment {
 
     private void observePowerValue(HomeViewModel homeViewModel) {
         homeViewModel.getPowerValue().observe(getViewLifecycleOwner(), value -> {
-            int color = value.equals("1") ? getResources().getColor(R.color.green) : getResources().getColor(R.color.red);
-            binding.powerBtn.setBackgroundColor(color);
+            Drawable state = value.equals("1") ? ContextCompat.getDrawable(getContext(), R.drawable.power_on_circular) :
+                    ContextCompat.getDrawable(getContext(), R.drawable.power_off_circular);
+            binding.powerBtn.setBackground(state);
         });
     }
 
     private void setupListener(HomeViewModel homeViewModel) {
-        binding.powerBtn.setOnClickListener(v -> homeViewModel.togglePower());
-        binding.refillBtn.setOnClickListener(v -> homeViewModel.refill());
         binding.powerBtn.setOnClickListener(v -> {
+            homeViewModel.togglePower();
             Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.scale_animation);
             v.startAnimation(animation);
         });
         binding.refillBtn.setOnClickListener(v -> {
+            homeViewModel.refill();
             Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.scale_animation);
             v.startAnimation(animation);
         });
-
     }
 
 
