@@ -23,6 +23,10 @@ public class HomeViewModel extends ViewModel {
         return powerValue;
     }
 
+    public LiveData<String> getRefillValue() {
+        return refillValue;
+    }
+
     public void fetchCurrentPowerState() {
         blynkApiService.getPinValue(token, "V0").enqueue(new Callback<Integer>() {
             @Override
@@ -46,6 +50,7 @@ public class HomeViewModel extends ViewModel {
             @Override
             public void onResponse(Call<Integer> call, Response<Integer> response) {
                 if (response.isSuccessful() && response.body() != null) {
+                    Log.d("response", "onResponse: " + response.body());
                     refillValue.setValue(response.body().toString());
                 } else {
                     Log.e("Refill Value", "Failed to fetch refill state: " + response.message());
@@ -60,46 +65,47 @@ public class HomeViewModel extends ViewModel {
     }
 
     public void togglePower() {
-        fetchCurrentPowerState();
-        powerValue.observeForever(currentValue -> {
-            String newValue = currentValue.equals("1") ? "0" : "1";
-            blynkApiService.updatePinValue(token, "V0", newValue).enqueue(new Callback<Integer>() {
-                @Override
-                public void onResponse(Call<Integer> call, Response<Integer> response) {
-                    if (response.isSuccessful()) {
-                        powerValue.setValue(newValue);
-                    } else {
-                        Log.e("HomeViewModel2", "Failed to update power state: " + response.message());
-                    }
-                }
+        String currentValue = powerValue.getValue();
+        if (currentValue == null) return;
+        String newValue = currentValue.equals("0") ? "1" : "0";
 
-                @Override
-                public void onFailure(Call<Integer> call, Throwable t) {
-                    Log.e("HomeViewModel2", "Error updating power state", t);
+        blynkApiService.updatePinValue(token, "V0", newValue).enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                if (response.isSuccessful()) {
+                    Log.d("Toggle Power", "Power state updated successfully");
+                    powerValue.setValue(newValue);
+                } else {
+                    Log.e("Toggle Power", "Failed to update power state: " + response.message());
                 }
-            });
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Log.e("Toggle Power", "Error updating power state", t);
+            }
         });
     }
 
     public void refill() {
-        fetchRefillState();
-        refillValue.observeForever(currentValue -> {
-            String newValue = currentValue.equals("1") ? "0" : "1";
-            blynkApiService.updatePinValue(token, "V4", newValue).enqueue(new Callback<Integer>() {
-                @Override
-                public void onResponse(Call<Integer> call, Response<Integer> response) {
-                    if (response.isSuccessful()) {
-                        refillValue.setValue(newValue);
-                    } else {
-                        Log.e("Refill", "Failed to update refill state: " + response.message());
-                    }
-                }
+        String currentValue = refillValue.getValue();
+        if (currentValue == null) return;
+        String newValue = currentValue.equals("1") ? "0" : "1";
 
-                @Override
-                public void onFailure(Call<Integer> call, Throwable t) {
-                    Log.e("Refill", "Error updating refill state", t);
+        blynkApiService.updatePinValue(token, "V4", newValue).enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                if (response.isSuccessful()) {
+                    refillValue.setValue(newValue);
+                } else {
+                    Log.e("Refill", "Failed to update refill state: " + response.message());
                 }
-            });
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Log.e("Refill", "Error updating refill state", t);
+            }
         });
     }
 }

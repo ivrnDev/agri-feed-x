@@ -13,7 +13,7 @@ public interface BlynkApiService {
 
     // Update value to virtual pin
     @GET("external/api/update")
-    Call<Integer> updatePinValue(
+    Call<String> updatePinValue(
             @Query("token") String token,
             @Query("pin") String pin,
             @Query("value") String value

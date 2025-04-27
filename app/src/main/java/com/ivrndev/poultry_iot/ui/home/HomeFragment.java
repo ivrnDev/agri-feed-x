@@ -2,6 +2,7 @@ package com.ivrndev.poultry_iot.ui.home;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,15 +24,17 @@ public class HomeFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        HomeViewModel homeViewModel =
-                new ViewModelProvider(this).get(HomeViewModel.class);
+        HomeViewModel homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         observePowerValue(homeViewModel);
-        setupListener(homeViewModel);
+        observeRefillValue(homeViewModel);
         setupFoodLevel();
+        setupListener(homeViewModel);
+        homeViewModel.fetchCurrentPowerState();
+        homeViewModel.fetchRefillState();
 
         return root;
     }
@@ -52,10 +55,12 @@ public class HomeFragment extends Fragment {
         midRange.setFrom(20);
         midRange.setTo(80);
         midRange.setColor(getResources().getColor(R.color.yellow));
+
         Range highRange = new Range();
         highRange.setFrom(80);
         highRange.setTo(100);
         highRange.setColor(getResources().getColor(R.color.green));
+
         foodLevel.addRange(lowRange);
         foodLevel.addRange(midRange);
         foodLevel.addRange(highRange);
@@ -63,17 +68,18 @@ public class HomeFragment extends Fragment {
         foodLevel.setMaxValue(100);
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
-    }
-
     private void observePowerValue(HomeViewModel homeViewModel) {
         homeViewModel.getPowerValue().observe(getViewLifecycleOwner(), value -> {
+            Log.d("Power Value", "observePowerValue: " + value);
             Drawable state = value.equals("1") ? ContextCompat.getDrawable(getContext(), R.drawable.power_on_circular) :
                     ContextCompat.getDrawable(getContext(), R.drawable.power_off_circular);
             binding.powerBtn.setBackground(state);
+        });
+    }
+
+    private void observeRefillValue(HomeViewModel homeViewModel) {
+        homeViewModel.getRefillValue().observe(getViewLifecycleOwner(), value -> {
+            Log.d("Refill Value", "observeRefillValue: " + value);
         });
     }
 
@@ -83,6 +89,7 @@ public class HomeFragment extends Fragment {
             Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.scale_animation);
             v.startAnimation(animation);
         });
+
         binding.refillBtn.setOnClickListener(v -> {
             homeViewModel.refill();
             Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.scale_animation);
@@ -90,5 +97,9 @@ public class HomeFragment extends Fragment {
         });
     }
 
-
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
+    }
 }
