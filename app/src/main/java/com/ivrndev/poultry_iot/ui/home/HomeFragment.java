@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -25,10 +27,9 @@ public class HomeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        observePowerValue(homeViewModel);
+//        observePowerValue(homeViewModel);
         setupListener(homeViewModel);
-        setupFoodLevel();
-
+//        setupFoodLevel();
 
         return root;
     }
@@ -75,5 +76,17 @@ public class HomeFragment extends Fragment {
 
     private void setupListener(HomeViewModel homeViewModel) {
         binding.powerBtn.setOnClickListener(v -> homeViewModel.togglePower());
+        binding.refillBtn.setOnClickListener(v -> homeViewModel.refill());
+        binding.powerBtn.setOnClickListener(v -> {
+            Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.scale_animation);
+            v.startAnimation(animation);
+        });
+        binding.refillBtn.setOnClickListener(v -> {
+            Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.scale_animation);
+            v.startAnimation(animation);
+        });
+
     }
+
+
 }

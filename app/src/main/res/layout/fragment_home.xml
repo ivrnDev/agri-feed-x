@@ -8,41 +8,45 @@
 
     <ImageButton
         android:id="@+id/powerBtn"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="88dp"
+        android:layout_width="54dp"
+        android:layout_height="54dp"
         android:background="@drawable/power_button_circular"
-        android:scaleType="centerInside"
+        android:padding="8dp"
+        android:scaleType="centerCrop"
         android:src="@android:drawable/ic_lock_power_off"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.836"
+        app:layout_constraintHorizontal_bias="0.901"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.929" />
+        app:layout_constraintVertical_bias="0.83" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/refillBtn"
-        android:layout_width="121dp"
-        android:layout_height="239dp"
+        android:layout_width="159dp"
+        android:layout_height="112dp"
+        android:background="@drawable/refill_button_circular"
         android:text="@string/refill_button"
-        android:textSize="20dp"
+        android:textSize="17dp"
         android:textStyle="bold"
         app:icon="@drawable/icon_refresh"
         app:iconGravity="top"
-        app:iconPadding="0dp"
+        app:iconPadding="1dp"
+        app:rippleColor="@color/secondary_light"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.622" />
+        app:layout_constraintVertical_bias="0.592" />
 
     <com.ekn.gruzer.gaugelibrary.HalfGauge
         android:id="@+id/foodLevelSensor"
-        android:layout_width="293dp"
-        android:layout_height="273dp"
-        android:layout_marginTop="40dp"
+        android:layout_width="325dp"
+        android:layout_height="342dp"
+        android:layout_marginTop="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

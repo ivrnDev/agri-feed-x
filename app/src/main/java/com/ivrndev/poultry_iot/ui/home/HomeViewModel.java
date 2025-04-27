@@ -15,6 +15,7 @@ import retrofit2.Response;
 
 public class HomeViewModel extends ViewModel {
     private final MutableLiveData<String> powerValue = new MutableLiveData<>();
+    private final MutableLiveData<String> refillValue = new MutableLiveData<>();
     private final BlynkApiService blynkApiService = RetrofitClient.getRetrofitInstance().create(BlynkApiService.class);
     private final String token = "-f79MI8QYI1PWyLqtSvh6NWJ5giBVA_N";
 
@@ -22,7 +23,6 @@ public class HomeViewModel extends ViewModel {
         return powerValue;
     }
 
-    // Fetch the current power state
     public void fetchCurrentPowerState() {
         blynkApiService.getPinValue(token, "V0").enqueue(new Callback<Integer>() {
             @Override
@@ -37,6 +37,24 @@ public class HomeViewModel extends ViewModel {
             @Override
             public void onFailure(Call<Integer> call, Throwable t) {
                 Log.e("HomeViewModel1", "Error fetching power state", t);
+            }
+        });
+    }
+
+    public void fetchRefillState() {
+        blynkApiService.getPinValue(token, "V4").enqueue(new Callback<Integer>() {
+            @Override
+            public void onResponse(Call<Integer> call, Response<Integer> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    refillValue.setValue(response.body().toString());
+                } else {
+                    Log.e("Refill Value", "Failed to fetch refill state: " + response.message());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Integer> call, Throwable t) {
+                Log.e("Refill Value", "Error fetching refill state", t);
             }
         });
     }
@@ -58,6 +76,28 @@ public class HomeViewModel extends ViewModel {
                 @Override
                 public void onFailure(Call<Integer> call, Throwable t) {
                     Log.e("HomeViewModel2", "Error updating power state", t);
+                }
+            });
+        });
+    }
+
+    public void refill() {
+        fetchRefillState();
+        refillValue.observeForever(currentValue -> {
+            String newValue = currentValue.equals("1") ? "0" : "1";
+            blynkApiService.updatePinValue(token, "V4", newValue).enqueue(new Callback<Integer>() {
+                @Override
+                public void onResponse(Call<Integer> call, Response<Integer> response) {
+                    if (response.isSuccessful()) {
+                        refillValue.setValue(newValue);
+                    } else {
+                        Log.e("Refill", "Failed to update refill state: " + response.message());
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<Integer> call, Throwable t) {
+                    Log.e("Refill", "Error updating refill state", t);
                 }
             });
         });
