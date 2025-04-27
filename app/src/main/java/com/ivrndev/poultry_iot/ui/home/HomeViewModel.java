@@ -23,10 +23,6 @@ public class HomeViewModel extends ViewModel {
         return powerValue;
     }
 
-    public LiveData<String> getRefillValue() {
-        return refillValue;
-    }
-
     public void fetchCurrentPowerState() {
         blynkApiService.getPinValue(token, "V0").enqueue(new Callback<Integer>() {
             @Override

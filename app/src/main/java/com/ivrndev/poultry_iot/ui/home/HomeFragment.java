@@ -29,14 +29,19 @@ public class HomeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        observePowerValue(homeViewModel);
-        observeRefillValue(homeViewModel);
         setupFoodLevel();
+
+        observePowerValue(homeViewModel);
         setupListener(homeViewModel);
-        homeViewModel.fetchCurrentPowerState();
-        homeViewModel.fetchRefillState();
+
 
         return root;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 
     private void setupFoodLevel() {
@@ -77,13 +82,10 @@ public class HomeFragment extends Fragment {
         });
     }
 
-    private void observeRefillValue(HomeViewModel homeViewModel) {
-        homeViewModel.getRefillValue().observe(getViewLifecycleOwner(), value -> {
-            Log.d("Refill Value", "observeRefillValue: " + value);
-        });
-    }
-
     private void setupListener(HomeViewModel homeViewModel) {
+        homeViewModel.fetchCurrentPowerState();
+        homeViewModel.fetchRefillState();
+
         binding.powerBtn.setOnClickListener(v -> {
             homeViewModel.togglePower();
             Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.scale_animation);
@@ -97,9 +99,5 @@ public class HomeFragment extends Fragment {
         });
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
-    }
+
 }
