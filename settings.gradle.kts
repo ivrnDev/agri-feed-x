@@ -21,5 +21,5 @@ dependencyResolutionManagement {
 
 }
 
-rootProject.name = "poultry-iot"
+rootProject.name = "agri-feed-x"
 include(":app")
