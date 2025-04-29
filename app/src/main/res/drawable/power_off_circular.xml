@@ -3,7 +3,7 @@
     android:color="#33FFFFFF">
     <item>
         <shape android:shape="oval">
-            <solid android:color="@color/red" /> <!-- Your normal background color -->
+            <solid android:color="@color/error_color" /> <!-- Your normal background color -->
             <corners android:radius="50dp" />
         </shape>
     </item>

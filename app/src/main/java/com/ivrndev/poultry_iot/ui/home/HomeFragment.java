@@ -48,13 +48,13 @@ public class HomeFragment extends Fragment {
         var foodLevel = binding.foodLevelSensor;
         foodLevel.enableAnimation(true);
         foodLevel.setValue(99);
-        foodLevel.setMaxValueTextColor(getResources().getColor(R.color.green));
-        foodLevel.setMinValueTextColor(getResources().getColor(R.color.red));
+        foodLevel.setMaxValueTextColor(getResources().getColor(R.color.success_color));
+        foodLevel.setMinValueTextColor(getResources().getColor(R.color.error_color));
 
         Range lowRange = new Range();
         lowRange.setFrom(0);
         lowRange.setTo(20);
-        lowRange.setColor(getResources().getColor(R.color.red));
+        lowRange.setColor(getResources().getColor(R.color.error_color));
 
         Range midRange = new Range();
         midRange.setFrom(20);
@@ -64,7 +64,7 @@ public class HomeFragment extends Fragment {
         Range highRange = new Range();
         highRange.setFrom(80);
         highRange.setTo(100);
-        highRange.setColor(getResources().getColor(R.color.green));
+        highRange.setColor(getResources().getColor(R.color.success_color));
 
         foodLevel.addRange(lowRange);
         foodLevel.addRange(midRange);

@@ -1,18 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="green">#4CAF50</color>
-    <color name="red">#F44336</color>
+    <!-- Light Mode Colors -->
+    <!-- Primary Theme Colors -->
+    <color name="colorPrimary">#3AAFA9</color>
+    <color name="colorPrimaryVariant">#2B7A78</color>
+    <color name="colorOnPrimary">#FFFFFF</color>
+
+    <!-- Secondary Theme Colors -->
+    <color name="colorSecondary">#2B7A78</color>
+    <color name="colorSecondaryVariant">#17252A</color>
+    <color name="colorOnSecondary">#FFFFFF</color>
+
+    <!-- Background and Surface Colors -->
+    <color name="colorBackground">#FEFFFF</color>
+    <color name="colorSurface">#DEF2F1</color>
+    <color name="colorOnSurface">#17252A</color>
+    <color name="colorOnSurfaceVariant">#2B7A78</color>
+
+    <!-- Status and Navigation Bar Colors -->
+    <color name="status_bar_light">#DEF2F1</color>
+    <color name="navigation_bar_light">#F1F1F1</color>
+
+    <!-- Semantic Colors -->
+    <color name="error_color">#D32F2F</color>
+    <color name="success_color">#4CAF50</color>
+
+    <!-- Dark Mode Colors -->
+    <!-- Primary Theme Colors -->
+    <color name="colorPrimary_dark">#3AAFA9</color>
+    <color name="colorPrimaryVariant_dark">#2B7A78</color>
+    <color name="colorOnPrimary_dark">#17252A</color>
+
+    <!-- Secondary Theme Colors -->
+    <color name="colorSecondary_dark">#DEF2F1</color>
+    <color name="colorSecondaryVariant_dark">#FEFFFF</color>
+    <color name="colorOnSecondary_dark">#17252A</color>
+
+    <!-- Background and Surface Colors -->
+    <color name="colorBackground_dark">#17252A</color>
+    <color name="colorSurface_dark">#17252A</color>
+    <color name="colorOnSurface_dark">#FEFFFF</color>
+    <color name="colorOnSurfaceVariant_dark">#3AAFA9</color>
+
+    <!-- Status and Navigation Bar Colors -->
+    <color name="status_bar_dark">#17252A</color>
+    <color name="navigation_bar_dark">#17252A</color>
+
+    <!-- Semantic Colors for Dark Mode -->
+    <color name="error_color_dark">#CF6679</color>
+    <color name="success_color_dark">#03DAC5</color>
+
+    <!-- Other Colors -->
+    <color name="divider_color_dark">#2B7A78</color>
     <color name="yellow">#FFFF00</color>
-
-    <color name="blue_200">#CCE0FF</color>
-    <color name="blue_700">#0C66E4</color>
-
-    <color name="primary_light">#205781</color>
-    <color name="secondary_light">#4F959D</color>
-    <color name="primary_dark">#205781</color>
-    <color name="secondary_dark">#205781</color>
-
-
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
 </resources>

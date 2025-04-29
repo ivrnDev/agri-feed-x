@@ -1,15 +1,30 @@
 <resources>
     <!-- Base application theme. -->
     <style name="Theme.Poultryiot" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-        <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/primary_dark</item>
-        <item name="colorPrimaryVariant">@color/secondary_dark</item>
-        <item name="colorOnPrimary">@color/white</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/blue_200</item>
-        <item name="colorSecondaryVariant">@color/blue_700</item>
-        <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="colorPrimary">@color/colorPrimary_dark</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryVariant_dark</item>
+        <item name="colorOnPrimary">@color/colorOnPrimary</item>
+
+        <!-- Secondary colors -->
+        <item name="colorSecondary">@color/colorSecondary_dark</item>
+        <item name="colorSecondaryVariant">@color/colorSecondaryVariant_dark</item>
+        <item name="colorOnSecondary">@color/colorOnSecondary_dark</item>
+
+        <!-- Background and surface colors -->
+        <item name="android:windowBackground">@color/colorBackground_dark</item>
+        <item name="colorSurface">@color/colorSurface_dark</item>
+        <item name="colorOnSurface">@color/colorOnSurface_dark</item>
+
+        <!-- Text colors -->
+        <item name="android:textColorPrimary">@color/colorOnSurface_dark</item>
+        <item name="android:textColorSecondary">@color/colorOnSurfaceVariant_dark</item>
+
+        <!-- Status bar and navigation bar -->
+        <item name="android:statusBarColor">@color/status_bar_dark</item>
+        <item name="android:navigationBarColor">@color/navigation_bar_dark</item>
+        <item name="android:windowLightStatusBar">false</item>
+
+        <!-- Error colors -->
+        <item name="colorError">@color/error_color_dark</item>
     </style>
 </resources>
