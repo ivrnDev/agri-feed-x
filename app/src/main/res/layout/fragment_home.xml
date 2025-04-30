@@ -34,6 +34,7 @@
         app:iconTint="@color/white"
         app:iconGravity="top"
         app:iconPadding="1dp"
+        app:iconSize="70dp"
         app:rippleColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

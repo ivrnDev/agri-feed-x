@@ -27,6 +27,5 @@
         <!-- Error colors -->
         <item name="colorError">@color/error_color_dark</item>
 
-      
     </style>
 </resources>

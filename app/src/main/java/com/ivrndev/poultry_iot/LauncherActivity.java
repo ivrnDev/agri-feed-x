@@ -14,11 +14,13 @@ public class LauncherActivity extends AppCompatActivity {
         SharedPreferences prefs = getSharedPreferences("app_prefs", MODE_PRIVATE);
         boolean isLoggedIn = prefs.getBoolean("is_logged_in", false);
 
-        if (isLoggedIn) {
-            startActivity(new Intent(this, MainActivity.class));
-        } else {
-            startActivity(new Intent(this, LoginActivity.class));
-        }
+//        if (isLoggedIn) {
+//            startActivity(new Intent(this, MainActivity.class));
+//        } else {
+//            startActivity(new Intent(this, LoginActivity.class));
+//        }
+
+        startActivity(new Intent(this, MainActivity.class));
 
         finish();
     }
