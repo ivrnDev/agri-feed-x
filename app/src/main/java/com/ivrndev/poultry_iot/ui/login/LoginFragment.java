@@ -10,21 +10,26 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.ivrndev.poultry_iot.databinding.FragmentHomeBinding;
+import com.ivrndev.poultry_iot.databinding.FragmentLoginBinding;
 
 public class LoginFragment extends Fragment {
-    
-    private FragmentHomeBinding binding;
+
+    private FragmentLoginBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         LoginViewModel loginViewModel = new ViewModelProvider(this).get(LoginViewModel
                 .class);
 
-        binding = FragmentHomeBinding.inflate(inflater, container, false);
+        binding = FragmentLoginBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         return root;
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
+    }
 
 }
