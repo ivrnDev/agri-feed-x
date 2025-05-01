@@ -5,11 +5,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.ivrndev.poultry_iot.R;
 import com.ivrndev.poultry_iot.databinding.FragmentLoginBinding;
 
 public class LoginFragment extends Fragment {
@@ -23,6 +26,9 @@ public class LoginFragment extends Fragment {
 
         binding = FragmentLoginBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+
+        setupListener(loginViewModel);
+
         return root;
     }
 
@@ -31,5 +37,13 @@ public class LoginFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+
+    private void setupListener(LoginViewModel loginViewModel) {
+        binding.submitBtn.setOnClickListener(v -> {
+            Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.scale_animation);
+            v.startAnimation(animation);
+        });
+    }
+
 
 }

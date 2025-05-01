@@ -8,7 +8,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/loginContainer"
+        android:id="@+id/signupContainer"
         android:background="@drawable/homescreen_gradient_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -88,7 +88,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Full Name"
-                    android:inputType="textPassword" />
+                    android:inputType="text" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -175,7 +175,7 @@
                 android:layout_marginStart="40dp"
                 android:layout_marginTop="176dp"
                 android:layout_marginEnd="40dp"
-                android:background="@drawable/rounded_button"
+                android:background="@drawable/button_ripple"
                 android:text="Signup"
                 android:textAllCaps="true"
                 android:textSize="15sp"
