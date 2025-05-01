@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "451588166169",
+    "firebase_url": "https://agrifeed-x-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "agrifeed-x",
+    "storage_bucket": "agrifeed-x.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:451588166169:android:be6c599f3b4f0eb5bd1088",
+        "android_client_info": {
+          "package_name": "com.ivrndev.poultry_iot"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqCYkKQLGccUcsz9zi1EBihljz9O0QMP0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
