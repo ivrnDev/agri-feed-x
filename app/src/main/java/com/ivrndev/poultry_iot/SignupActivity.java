@@ -7,8 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.ivrndev.poultry_iot.ui.login.LoginFragment;
 
-
-public class LoginActivity extends AppCompatActivity {
+public class SignupActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,5 +27,7 @@ public class LoginActivity extends AppCompatActivity {
                     .replace(R.id.loginContainer, new LoginFragment())
                     .commit();
         }
+
     }
 }
+
