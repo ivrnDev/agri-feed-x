@@ -4,6 +4,8 @@ import com.google.firebase.Firebase;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.function.Consumer;
+
 public class FirebaseService {
     private static FirebaseService instance;
     private final DatabaseReference database;
@@ -28,9 +30,18 @@ public class FirebaseService {
                     System.err.println("Failed to write data: " + e.getMessage());
                 });
     }
-
-    // Read data from a path
     public DatabaseReference getData(String path) {
         return database.child(path);
+    }
+
+    public void checkExistent(String path, Consumer<Boolean> callback) {
+        database.child(path).get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                boolean exists = task.getResult().exists();
+                callback.accept(exists);
+            } else {
+                callback.accept(false);
+            }
+        });
     }
 }
