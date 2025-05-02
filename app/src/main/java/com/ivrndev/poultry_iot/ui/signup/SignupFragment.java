@@ -63,6 +63,10 @@ public class SignupFragment extends Fragment {
                     binding.userNameLayout.setError("Username already exists");
                 } else {
                     Toast.makeText(getContext(), "Account created successfully!", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getActivity(), MainActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+                    getActivity().finish();
                 }
             });
         });
