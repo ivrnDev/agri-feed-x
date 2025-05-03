@@ -1,5 +1,6 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/smartFeedingContainer">
@@ -18,18 +19,19 @@
                 android:id="@+id/selectBirdType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="48dp"
                 android:text="Select Bird Type"
-                android:textSize="18sp"
+                android:textAllCaps="true"
+                android:textSize="20sp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
                 android:id="@+id/henButton"
-                android:layout_width="300dp"
-                android:layout_height="200dp"
+                android:layout_width="350dp"
+                android:layout_height="230dp"
                 android:layout_marginTop="48dp"
                 android:background="@drawable/button_ripple"
                 android:scaleType="fitCenter"
@@ -41,27 +43,27 @@
 
             <ImageButton
                 android:id="@+id/quailButton"
-                android:layout_width="300dp"
-                android:layout_height="200dp"
+                android:layout_width="350dp"
+                android:layout_height="230dp"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/button_ripple"
                 android:scaleType="fitCenter"
-                android:src="@drawable/quail"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.495"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView4"
-                app:srcCompat="@drawable/poultry_icon" />
+                app:srcCompat="@drawable/quail" />
 
             <TextView
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Hen"
+                android:layout_marginTop="20dp"
+                android:text="HEN"
                 android:textSize="22sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toEndOf="@+id/textView5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/henButton" />
 
@@ -70,14 +72,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Quail"
+                android:text="QUAIL"
                 android:textSize="22sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/quailButton"
-                app:layout_constraintVertical_bias="0.067" />
+                app:layout_constraintVertical_bias="0.048" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
