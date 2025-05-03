@@ -157,12 +157,12 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/signinLink"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="132dp"
                 android:layout_weight="1"
-                android:text="Already Have an Account? Sign In"
+                android:text="Already have an account? Sign In"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

@@ -3,11 +3,16 @@ package com.ivrndev.poultry_iot.ui.login;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -16,6 +21,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.ivrndev.poultry_iot.MainActivity;
 import com.ivrndev.poultry_iot.R;
+import com.ivrndev.poultry_iot.SignupActivity;
 import com.ivrndev.poultry_iot.databinding.FragmentLoginBinding;
 import com.ivrndev.poultry_iot.domain.User;
 
@@ -83,5 +89,22 @@ public class LoginFragment extends Fragment {
                 }
             });
         });
+
+        String text = "Don't Have an Account? Sign Up";
+        SpannableString spannable = new SpannableString(text);
+        ClickableSpan clickableSpan = new ClickableSpan() {
+            @Override
+            public void onClick(@NonNull View widget) {
+                Intent intent = new Intent(getContext(), SignupActivity.class);
+                startActivity(intent);
+            }
+        };
+        int start = text.indexOf("Sign Up");
+        int end = start + "Sign Up".length();
+
+        spannable.setSpan(clickableSpan, start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        TextView signupLink = binding.signupLink;
+        signupLink.setText(spannable);
+        signupLink.setMovementMethod(LinkMovementMethod.getInstance());
     }
 }

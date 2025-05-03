@@ -3,12 +3,17 @@ package com.ivrndev.poultry_iot.ui.signup;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -16,8 +21,10 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.material.textfield.TextInputEditText;
+import com.ivrndev.poultry_iot.LoginActivity;
 import com.ivrndev.poultry_iot.MainActivity;
 import com.ivrndev.poultry_iot.R;
+import com.ivrndev.poultry_iot.SignupActivity;
 import com.ivrndev.poultry_iot.databinding.FragmentSignupBinding;
 import com.ivrndev.poultry_iot.domain.User;
 
@@ -70,6 +77,23 @@ public class SignupFragment extends Fragment {
                 }
             });
         });
+
+        String text = "Already have an account? Sign In";
+        SpannableString spannable = new SpannableString(text);
+        ClickableSpan clickableSpan = new ClickableSpan() {
+            @Override
+            public void onClick(@NonNull View widget) {
+                Intent intent = new Intent(getContext(), LoginActivity.class);
+                startActivity(intent);
+            }
+        };
+        int start = text.indexOf("Sign In");
+        int end = start + "Sign In".length();
+
+        spannable.setSpan(clickableSpan, start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        TextView signinLink = binding.signinLink;
+        signinLink.setText(spannable);
+        signinLink.setMovementMethod(LinkMovementMethod.getInstance());
     }
 
     private boolean validateInputs(String name, String email, String password, String confirmPassword) {
