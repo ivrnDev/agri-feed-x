@@ -55,6 +55,8 @@
         android:id="@+id/button3"
         android:layout_width="300dp"
         android:layout_height="140dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="180dp"
         android:text="Interval Mode"
         android:textSize="22dp"
         app:cornerRadius="20dp"
@@ -62,13 +64,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"
-        app:layout_constraintVertical_bias="0.107" />
+        app:layout_constraintTop_toBottomOf="@+id/smartFeedingBtn"
+        app:layout_constraintVertical_bias="0.975" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/button4"
         android:layout_width="300dp"
         android:layout_height="140dp"
+        android:layout_marginTop="33dp"
+        android:layout_marginBottom="16dp"
         android:text="Schedule Mode"
         android:textSize="22dp"
         app:cornerRadius="20dp"
@@ -76,7 +80,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"
-        app:layout_constraintVertical_bias="0.854" />
+        app:layout_constraintTop_toBottomOf="@+id/button3"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
