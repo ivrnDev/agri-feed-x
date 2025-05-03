@@ -12,7 +12,7 @@
         android:layout_height="46dp"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="184dp"
+        android:layout_marginBottom="148dp"
         android:text="Reset to default"
         app:backgroundTint="@color/orange"
         app:cornerRadius="20dp"
@@ -37,4 +37,46 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/resetBtn"
         app:layout_constraintVertical_bias="0.135" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button"
+        android:layout_width="300dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="36dp"
+        android:text="Smart Feeding"
+        android:textSize="24sp"
+        app:cornerRadius="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button3"
+        android:layout_width="300dp"
+        android:layout_height="140dp"
+        android:text="Interval Mode"
+        android:textSize="22dp"
+        app:cornerRadius="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/resetBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintVertical_bias="0.107" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button4"
+        android:layout_width="300dp"
+        android:layout_height="140dp"
+        android:text="Schedule Mode"
+        android:textSize="22dp"
+        app:cornerRadius="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/resetBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintVertical_bias="0.854" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
