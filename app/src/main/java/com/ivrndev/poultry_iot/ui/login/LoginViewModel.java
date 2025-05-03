@@ -21,9 +21,7 @@ public class LoginViewModel extends ViewModel {
 
     public void login(User user, Context context, Consumer<Boolean> callback) {
         if (user == null) return;
-
-        String path = "users/" + user.getUsername();
-        firebaseService.checkExistent(path, exists -> {
+        firebaseService.hasUser(user, exists -> {
             if (exists) {
                 SharedPreferences sharedPreferences = context.getSharedPreferences("UserPrefs", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
