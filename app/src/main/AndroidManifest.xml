@@ -39,6 +39,11 @@
             android:exported="true"
             android:label="@string/app_name"></activity>
 
+        <activity
+            android:name=".SmartFeedingActivity"
+            android:exported="true"
+            android:label="@string/app_name"></activity>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

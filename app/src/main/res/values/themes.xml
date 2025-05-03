@@ -15,7 +15,6 @@
         <item name="colorSurface">@color/colorSurface</item>
         <item name="colorOnSurface">@color/colorOnSurface</item>
 
-        <!-- Text colors -->
         <item name="android:textColorPrimary">@color/colorOnSurface</item>
         <item name="android:textColorSecondary">@color/colorOnSurfaceVariant</item>
 

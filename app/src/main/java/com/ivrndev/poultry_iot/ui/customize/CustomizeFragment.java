@@ -8,13 +8,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.ivrndev.poultry_iot.LoginActivity;
+import com.ivrndev.poultry_iot.SmartFeedingActivity;
 import com.ivrndev.poultry_iot.databinding.FragmentCustomizeBinding;
 
 public class CustomizeFragment extends Fragment {
@@ -40,9 +40,14 @@ public class CustomizeFragment extends Fragment {
             editor.apply();
 
             Intent intent = new Intent(getContext(), LoginActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); // clears back stack
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
             getActivity().finish();
+        });
+
+        binding.smartFeedingBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), SmartFeedingActivity.class);
+            startActivity(intent);
         });
     }
 
