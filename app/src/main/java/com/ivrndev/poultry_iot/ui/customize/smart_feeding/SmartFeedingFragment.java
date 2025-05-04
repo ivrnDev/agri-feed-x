@@ -1,6 +1,7 @@
 package com.ivrndev.poultry_iot.ui.customize.smart_feeding;
 
-import android.content.Context;
+import static android.content.Context.MODE_PRIVATE;
+
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,6 +16,7 @@ import com.ivrndev.poultry_iot.databinding.CustomizeSmartFeedingBinding;
 
 public class SmartFeedingFragment extends Fragment {
     private CustomizeSmartFeedingBinding binding;
+    private SharedPreferences sharedPreferences;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -23,6 +25,8 @@ public class SmartFeedingFragment extends Fragment {
 
         binding = CustomizeSmartFeedingBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+        sharedPreferences = getContext().getSharedPreferences("UserPrefs", MODE_PRIVATE);
+
         setupListener(smartFeedingViewModel);
         return root;
     }
@@ -37,24 +41,60 @@ public class SmartFeedingFragment extends Fragment {
         binding.viewFlipper.setInAnimation(requireContext(), android.R.anim.slide_in_left);
 
         binding.henButton.setOnClickListener(v -> {
-            SharedPreferences prefs = getContext().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = prefs.edit();
-            editor.putString("birdType", "hen");
-            editor.apply();
-            nextPage();
+            animateScale(v, () -> {
+                sharedPreferences.edit().putString("birdType", "hen");
+                sharedPreferences.edit().apply();
+                setPage(1);
+            });
         });
         binding.quailButton.setOnClickListener(v -> {
-            SharedPreferences prefs = getContext().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = prefs.edit();
-            editor.putString("birdType", "quail");
-            editor.apply();
-            nextPage();
+            animateScale(v, () -> {
+                sharedPreferences.edit().putString("birdType", "quail");
+                sharedPreferences.edit().apply();
+                setPage(2);
+            });
+        });
+
+        setupGrowthStage(binding.henChickBtn, "hen_chick");
+        setupGrowthStage(binding.henGrowerBtn, "hen_grower");
+        setupGrowthStage(binding.henPrelayingBtn, "hen_prelaying");
+        setupGrowthStage(binding.henAdultBtn, "hen_adult");
+        setupGrowthStage(binding.henMoltBtn, "hen_molt");
+
+        setupGrowthStage(binding.quailChickBtn, "quail_chick");
+        setupGrowthStage(binding.quailGrowerBtn, "quail_grower");
+        setupGrowthStage(binding.quailPrelayingBtn, "quail_prelaying");
+        setupGrowthStage(binding.quailAdultBtn, "quail_adult");
+        setupGrowthStage(binding.quailMoltBtn, "quail_molt");
+    }
+
+    private void setupGrowthStage(View view, String stage) {
+        view.setOnClickListener(v -> {
+            animateScale(v, () -> {
+                sharedPreferences.edit().putString("growth_stage", stage).apply();
+                getActivity().finish();
+            });
         });
     }
 
-    public void nextPage() {
-        int currentIndex = binding.viewFlipper.getDisplayedChild();
-        binding.viewFlipper.setDisplayedChild(currentIndex + 1);
-        binding.viewFlipper.invalidate();  //
+    public void setPage(int page) {
+        binding.viewFlipper.setDisplayedChild(page);
+        binding.viewFlipper.invalidate();
+    }
+
+    public void animateScale(View view, Runnable onAnimationEnd) {
+        view.animate()
+                .scaleX(0.95f)
+                .scaleY(0.95f)
+                .setDuration(100)
+                .withEndAction(() -> {
+                    view.animate()
+                            .scaleX(1f)
+                            .scaleY(1f)
+                            .setDuration(100)
+                            .withEndAction(onAnimationEnd)
+                            .start();
+                })
+                .start();
     }
 }
