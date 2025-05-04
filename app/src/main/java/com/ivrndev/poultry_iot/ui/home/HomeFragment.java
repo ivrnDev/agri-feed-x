@@ -1,5 +1,8 @@
 package com.ivrndev.poultry_iot.ui.home;
 
+import static android.content.Context.MODE_PRIVATE;
+
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,6 +20,8 @@ import androidx.lifecycle.ViewModelProvider;
 import com.ekn.gruzer.gaugelibrary.Range;
 import com.ivrndev.poultry_iot.R;
 import com.ivrndev.poultry_iot.databinding.FragmentHomeBinding;
+
+import java.util.Map;
 
 public class HomeFragment extends Fragment {
 
@@ -96,6 +101,13 @@ public class HomeFragment extends Fragment {
             homeViewModel.refill();
             Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.scale_animation);
             v.startAnimation(animation);
+            SharedPreferences sharedPreferences = getContext().getSharedPreferences("UserPrefs", MODE_PRIVATE);
+            Map<String, ?> allEntries = sharedPreferences.getAll();
+
+            for (Map.Entry<String, ?> entry : allEntries.entrySet()) {
+                Log.d("SharedPreferences USER PREF", entry.getKey() + ": " + entry.getValue().toString());
+            }
+
         });
     }
 
