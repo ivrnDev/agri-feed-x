@@ -2,6 +2,7 @@ package com.ivrndev.poultry_iot.ui.customize;
 
 import static android.content.Context.MODE_PRIVATE;
 
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
@@ -9,15 +10,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.ivrndev.poultry_iot.IntervalModeActivity;
 import com.ivrndev.poultry_iot.LoginActivity;
 import com.ivrndev.poultry_iot.R;
 import com.ivrndev.poultry_iot.ScheduleModeActivity;
@@ -109,8 +107,16 @@ public class CustomizeFragment extends Fragment {
                             .remove("growth_stage")
                             .apply();
                 });
-                Intent intent = new Intent(getActivity(), IntervalModeActivity.class);
-                startActivity(intent);
+                TimePickerDialog timePickerDialog = new TimePickerDialog(
+                        getContext(),
+                        (view, hourOfDay, minute) -> {
+
+                        },
+                        1,
+                        0,
+                        true
+                );
+                timePickerDialog.show();
             }
         });
 
