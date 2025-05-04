@@ -3,6 +3,8 @@ package com.ivrndev.poultry_iot.ui.home;
 import static android.content.Context.MODE_PRIVATE;
 
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
@@ -76,6 +78,16 @@ public class HomeFragment extends Fragment {
         foodLevel.addRange(highRange);
         foodLevel.setMinValue(0);
         foodLevel.setMaxValue(100);
+
+        int nightModeFlags = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+
+        if (nightModeFlags == Configuration.UI_MODE_NIGHT_YES) {
+            foodLevel.setValueColor(Color.WHITE);
+            foodLevel.setNeedleColor(Color.WHITE);
+        } else {
+            foodLevel.setValueColor(Color.BLACK);
+            foodLevel.setNeedleColor(Color.BLACK);
+        }
     }
 
     private void observePowerValue(HomeViewModel homeViewModel) {
