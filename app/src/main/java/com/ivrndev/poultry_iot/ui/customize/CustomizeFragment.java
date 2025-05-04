@@ -73,7 +73,7 @@ public class CustomizeFragment extends Fragment {
             String currentMode = sharedPreferences.getString("mode", null);
             if (!"smart_mode".equals(currentMode)) {
                 animateScale(v, () -> {
-                    if (!sharedPreferences.contains("bird_type") && !sharedPreferences.contains("growth_stage")) {
+                    if (!sharedPreferences.contains("bird_type") || !sharedPreferences.contains("growth_stage")) {
                         Intent intent = new Intent(getActivity(), SmartFeedingActivity.class);
                         startActivity(intent);
                     }
