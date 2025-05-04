@@ -12,7 +12,6 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.ivrndev.poultry_iot.databinding.CustomizeIntervalModeBinding;
 import com.ivrndev.poultry_iot.databinding.CustomizeScheduleModeBinding;
 import com.ivrndev.poultry_iot.ui.customize.smart_feeding.SmartFeedingViewModel;
 
