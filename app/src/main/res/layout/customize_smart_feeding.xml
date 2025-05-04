@@ -30,9 +30,11 @@
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/henButton"
-                android:layout_width="350dp"
+                android:layout_width="0dp"
                 android:layout_height="230dp"
+                android:layout_marginStart="35dp"
                 android:layout_marginTop="48dp"
+                android:layout_marginEnd="35dp"
                 android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.491"
@@ -43,9 +45,11 @@
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/quailButton"
-                android:layout_width="350dp"
+                android:layout_width="0dp"
                 android:layout_height="230dp"
+                android:layout_marginStart="35dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginEnd="35dp"
                 android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.491"
@@ -107,19 +111,22 @@
                 android:id="@+id/henMoltBtn"
                 android:layout_width="193dp"
                 android:layout_height="173dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
                 android:background="@android:color/transparent"
                 android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_bias="0.497"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/prelayingText"
+                app:layout_constraintVertical_bias="0.118"
                 app:shapeAppearanceOverlay="@style/RoundedImageStyle"
                 app:srcCompat="@drawable/molt" />
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/henGrowerBtn"
-                android:layout_width="193dp"
+                android:layout_width="0dp"
                 android:layout_height="173dp"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="20dp"
@@ -135,7 +142,7 @@
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/henChickBtn"
-                android:layout_width="193dp"
+                android:layout_width="0dp"
                 android:layout_height="173dp"
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="20dp"
@@ -151,10 +158,10 @@
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/henAdultBtn"
-                android:layout_width="193dp"
+                android:layout_width="0dp"
                 android:layout_height="173dp"
                 android:layout_marginStart="5dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="12dp"
                 android:background="@android:color/transparent"
                 android:scaleType="centerCrop"
@@ -167,10 +174,10 @@
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/henPrelayingBtn"
-                android:layout_width="193dp"
+                android:layout_width="0dp"
                 android:layout_height="173dp"
                 android:layout_marginStart="12dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="5dp"
                 android:background="@android:color/transparent"
                 android:scaleType="centerCrop"
@@ -242,13 +249,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:text="Molt (Post Laying)"
                 android:textAlignment="center"
                 android:textAllCaps="true"
                 android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/henMoltBtn" />
+                app:layout_constraintTop_toBottomOf="@+id/henMoltBtn"
+                app:layout_constraintVertical_bias="0.03" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -276,10 +287,10 @@
                 android:id="@+id/quailMoltBtn"
                 android:layout_width="193dp"
                 android:layout_height="173dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
                 android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/quailPrelayingText"
                 app:shapeAppearanceOverlay="@style/RoundedImageStyle"
@@ -287,7 +298,7 @@
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/quailGrowerBtn"
-                android:layout_width="193dp"
+                android:layout_width="0dp"
                 android:layout_height="173dp"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="20dp"
@@ -303,7 +314,7 @@
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/quailChickBtn"
-                android:layout_width="193dp"
+                android:layout_width="0dp"
                 android:layout_height="173dp"
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="20dp"
@@ -319,10 +330,10 @@
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/quailAdultBtn"
-                android:layout_width="193dp"
+                android:layout_width="0dp"
                 android:layout_height="173dp"
                 android:layout_marginStart="5dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="12dp"
                 android:scaleType="centerCrop"
                 app:layout_constraintBottom_toBottomOf="@+id/quailPrelayingBtn"
@@ -334,10 +345,10 @@
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/quailPrelayingBtn"
-                android:layout_width="193dp"
+                android:layout_width="0dp"
                 android:layout_height="173dp"
                 android:layout_marginStart="12dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="5dp"
                 android:scaleType="centerCrop"
                 app:layout_constraintEnd_toStartOf="@+id/quailAdultBtn"
@@ -412,9 +423,12 @@
                 android:textAlignment="center"
                 android:textAllCaps="true"
                 android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/quailMoltBtn" />
+                app:layout_constraintTop_toBottomOf="@+id/quailMoltBtn"
+                app:layout_constraintVertical_bias="0.082" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
