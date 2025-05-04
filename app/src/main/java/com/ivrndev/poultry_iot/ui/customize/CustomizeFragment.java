@@ -90,27 +90,27 @@ public class CustomizeFragment extends Fragment {
                             .remove("bird_type")
                             .remove("growth_stage")
                             .apply();
+                    Intent intent = new Intent(getActivity(), ScheduleModeActivity.class);
+                    startActivity(intent);
                 });
 
-                Intent intent = new Intent(getActivity(), ScheduleModeActivity.class);
-                startActivity(intent);
+
             }
         });
 
         binding.intervalModeBtn.setOnClickListener(v -> {
             String currentMode = sharedPreferences.getString("mode", null);
             if (!"interval_mode".equals(currentMode)) {
-                animateScale(v, () -> {
-                    sharedPreferences.edit()
-                            .putString("mode", "interval_mode")
-                            .remove("bird_type")
-                            .remove("growth_stage")
-                            .apply();
-                });
                 TimePickerDialog timePickerDialog = new TimePickerDialog(
                         getContext(),
                         (view, hourOfDay, minute) -> {
-
+                            animateScale(v, () -> {
+                                sharedPreferences.edit()
+                                        .putString("mode", "interval_mode")
+                                        .remove("bird_type")
+                                        .remove("growth_stage")
+                                        .apply();
+                            });
                         },
                         1,
                         0,
