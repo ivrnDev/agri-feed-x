@@ -4,6 +4,7 @@ import static android.content.Context.MODE_PRIVATE;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,7 +37,7 @@ public class CustomizeFragment extends Fragment {
         View root = binding.getRoot();
 
         sharedPreferences = requireContext().getSharedPreferences("UserPrefs", MODE_PRIVATE);
-
+        setupIcons();
         setupModeWatcher();
         fetchSelectedMode();
         setupListener(customizeViewModel);
@@ -135,8 +136,8 @@ public class CustomizeFragment extends Fragment {
 
         if (selectedView != null) {
             selectedView.animate()
-                    .scaleX(1.2f)
-                    .scaleY(1.2f)
+                    .scaleX(1.1f)
+                    .scaleY(1.1f)
                     .setDuration(200)
                     .start();
         }
@@ -163,6 +164,19 @@ public class CustomizeFragment extends Fragment {
                             .start();
                 })
                 .start();
+    }
+
+    public void setupIcons() {
+        Drawable smartModeIcon = getResources().getDrawable(R.drawable.smart_mode, null);
+        Drawable intervalModeIcon = getResources().getDrawable(R.drawable.interval_mode, null);
+        Drawable scheduleModeIcon = getResources().getDrawable(R.drawable.schedule_mode, null);
+
+        smartModeIcon.setBounds(0, 0, 280, 280);
+        intervalModeIcon.setBounds(0, 0, 280, 280);
+        scheduleModeIcon.setBounds(0, 0, 280, 280);
+        binding.smartFeedingBtn.setCompoundDrawables(null, null, smartModeIcon, null);
+        binding.intervalModeBtn.setCompoundDrawables(null, null, intervalModeIcon, null);
+        binding.scheduleModeBtn.setCompoundDrawables(null, null, scheduleModeIcon, null);
     }
 
     @Override
