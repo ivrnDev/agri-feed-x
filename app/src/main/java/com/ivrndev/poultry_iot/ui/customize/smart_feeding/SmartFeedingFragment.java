@@ -42,15 +42,13 @@ public class SmartFeedingFragment extends Fragment {
 
         binding.henButton.setOnClickListener(v -> {
             animateScale(v, () -> {
-                sharedPreferences.edit().putString("birdType", "hen");
-                sharedPreferences.edit().apply();
+                sharedPreferences.edit().putString("bird_type", "hen").apply();
                 setPage(1);
             });
         });
         binding.quailButton.setOnClickListener(v -> {
             animateScale(v, () -> {
-                sharedPreferences.edit().putString("birdType", "quail");
-                sharedPreferences.edit().apply();
+                sharedPreferences.edit().putString("bird_type", "quail").apply();
                 setPage(2);
             });
         });
