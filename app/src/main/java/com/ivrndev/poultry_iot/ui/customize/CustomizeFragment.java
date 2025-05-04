@@ -45,45 +45,64 @@ public class CustomizeFragment extends Fragment {
 
     public void setupListener(CustomizeViewModel customizeViewModel) {
         binding.resetBtn.setOnClickListener(v -> {
-            animate(v);
-            sharedPreferences.edit()
-                    .remove("bird_type")
-                    .remove("growth_stage")
-                    .putString("mode", "interval_mode")
-                    .apply();
-            fetchSelectedMode();
-            Toast.makeText(getContext(), "Successfully Reset to default settings", Toast.LENGTH_LONG).show();
+            animateScale(v, () -> {
+                sharedPreferences.edit()
+                        .remove("bird_type")
+                        .remove("growth_stage")
+                        .putString("mode", "interval_mode")
+                        .apply();
+                fetchSelectedMode();
+                Toast.makeText(getContext(), "Successfully Reset to default settings", Toast.LENGTH_LONG).show();
+            });
+
         });
 
         binding.logoutBtn.setOnClickListener(v -> {
-            animate(v);
-            sharedPreferences.edit().remove("username").apply();
+            animateScale(v, () -> {
+                sharedPreferences.edit().remove("username").apply();
 
-            Intent intent = new Intent(getContext(), LoginActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intent);
-            getActivity().finish();
+                Intent intent = new Intent(getContext(), LoginActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                getActivity().finish();
+            });
         });
 
         binding.smartFeedingBtn.setOnClickListener(v -> {
-            animate(v);
-            if (!sharedPreferences.contains("bird_type") && !sharedPreferences.contains("growth_stage")) {
-                Intent intent = new Intent(getActivity(), SmartFeedingActivity.class);
-                startActivity(intent);
+            String currentMode = sharedPreferences.getString("mode", null);
+            if (!"smart_mode".equals(currentMode)) {
+                animateScale(v, () -> {
+                    if (!sharedPreferences.contains("bird_type") && !sharedPreferences.contains("growth_stage")) {
+                        Intent intent = new Intent(getActivity(), SmartFeedingActivity.class);
+                        startActivity(intent);
+                    }
+                });
             }
         });
+
+        binding.scheduleModeBtn.setOnClickListener(v -> {
+            String currentMode = sharedPreferences.getString("mode", null);
+            if (!"schedule_mode".equals(currentMode)) {
+                animateScale(v, () -> sharedPreferences.edit().putString("mode", "schedule_mode").apply());
+            }
+        });
+
+        binding.intervalModeBtn.setOnClickListener(v -> {
+            String currentMode = sharedPreferences.getString("mode", null);
+            if (!"interval_mode".equals(currentMode)) {
+                animateScale(v, () -> sharedPreferences.edit().putString("mode", "interval_mode").apply());
+            }
+        });
+
     }
 
     public void fetchSelectedMode() {
         String mode = sharedPreferences.getString("mode", null);
 
-        binding.smartFeedingBtn.setScaleX(1f);
-        binding.smartFeedingBtn.setScaleY(1f);
-        binding.intervalModeBtn.setScaleX(1f);
-        binding.intervalModeBtn.setScaleY(1f);
-        binding.scheduleModeBtn.setScaleX(1f);
-        binding.scheduleModeBtn.setScaleY(1f);
-        
+        binding.smartFeedingBtn.animate().scaleX(1f).scaleY(1f).setDuration(200).start();
+        binding.intervalModeBtn.animate().scaleX(1f).scaleY(1f).setDuration(200).start();
+        binding.scheduleModeBtn.animate().scaleX(1f).scaleY(1f).setDuration(200).start();
+
         if (mode == null) {
             return;
         }
@@ -118,9 +137,20 @@ public class CustomizeFragment extends Fragment {
         sharedPreferences.registerOnSharedPreferenceChangeListener(modeChangeListener);
     }
 
-    public void animate(View view) {
-        Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.scale_animation);
-        view.startAnimation(animation);
+    public void animateScale(View view, Runnable onAnimationEnd) {
+        view.animate()
+                .scaleX(0.95f)
+                .scaleY(0.95f)
+                .setDuration(100)
+                .withEndAction(() -> {
+                    view.animate()
+                            .scaleX(1f)
+                            .scaleY(1f)
+                            .setDuration(100)
+                            .withEndAction(onAnimationEnd)
+                            .start();
+                })
+                .start();
     }
 
     @Override
