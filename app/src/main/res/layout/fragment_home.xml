@@ -26,7 +26,6 @@
         android:id="@+id/refillBtn"
         android:layout_width="159dp"
         android:layout_height="112dp"
-        android:layout_marginTop="25dp"
         android:background="@drawable/refill_button_circular"
         android:text="@string/refill_button"
         android:textSize="17sp"
@@ -38,21 +37,19 @@
         app:iconTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5"
+        app:layout_constraintTop_toBottomOf="@+id/foodLevelSensor"
+        app:layout_constraintVertical_bias="0.135"
         app:rippleColor="@color/white" />
 
     <com.ekn.gruzer.gaugelibrary.HalfGauge
         android:id="@+id/foodLevelSensor"
-        android:layout_width="0dp"
-        android:layout_height="342dp"
+        android:layout_width="375dp"
+        android:layout_height="340dp"
         android:layout_marginStart="12dp"
         android:layout_marginEnd="12dp"
-        android:layout_marginBottom="25dp"
-        app:layout_constraintBottom_toTopOf="@+id/refillBtn"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.521"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
