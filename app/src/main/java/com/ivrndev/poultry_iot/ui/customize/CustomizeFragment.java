@@ -8,18 +8,23 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.ivrndev.poultry_iot.LoginActivity;
+import com.ivrndev.poultry_iot.R;
 import com.ivrndev.poultry_iot.SmartFeedingActivity;
 import com.ivrndev.poultry_iot.databinding.FragmentCustomizeBinding;
 
 public class CustomizeFragment extends Fragment {
 
     private FragmentCustomizeBinding binding;
+    private SharedPreferences sharedPreferences;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -28,16 +33,22 @@ public class CustomizeFragment extends Fragment {
 
         binding = FragmentCustomizeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+        sharedPreferences = getContext().getSharedPreferences("UserPrefs", MODE_PRIVATE);
+
         setupListener(customizeViewModel);
         return root;
     }
 
     public void setupListener(CustomizeViewModel customizeViewModel) {
+        binding.resetBtn.setOnClickListener(v -> {
+            animate(v);
+            sharedPreferences.edit().remove("bird_type").apply();
+            sharedPreferences.edit().remove("growth_stage").apply();
+            Toast.makeText(getContext(), "Successfully Reset to default settings", Toast.LENGTH_LONG).show();
+        });
         binding.logoutBtn.setOnClickListener(v -> {
-            SharedPreferences prefs = getContext().getSharedPreferences("UserPrefs", MODE_PRIVATE);
-            SharedPreferences.Editor editor = prefs.edit();
-            editor.remove("username");
-            editor.apply();
+            animate(v);
+            sharedPreferences.edit().remove("username").apply();
 
             Intent intent = new Intent(getContext(), LoginActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -46,9 +57,17 @@ public class CustomizeFragment extends Fragment {
         });
 
         binding.smartFeedingBtn.setOnClickListener(v -> {
-            Intent intent = new Intent(getActivity(), SmartFeedingActivity.class);
-            startActivity(intent);
+            animate(v);
+            if (!sharedPreferences.contains("bird_type") && !sharedPreferences.contains("growth_stage")) {
+                Intent intent = new Intent(getActivity(), SmartFeedingActivity.class);
+                startActivity(intent);
+            }
         });
+    }
+
+    public void animate(View view) {
+        Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.scale_animation);
+        view.startAnimation(animation);
     }
 
     @Override
