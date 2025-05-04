@@ -129,7 +129,6 @@ public class CustomizeFragment extends Fragment {
                 timePickerDialog.show();
             }
         });
-
     }
 
     public void fetchSelectedMode() {
