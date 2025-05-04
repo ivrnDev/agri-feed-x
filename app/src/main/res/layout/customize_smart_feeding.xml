@@ -11,6 +11,175 @@
         android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/page2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorBackground">
+
+            <TextView
+                android:id="@+id/henHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="48dp"
+                android:text="Select Growth Stage"
+                android:textAllCaps="true"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.496"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imageButton6"
+                android:layout_width="193dp"
+                android:layout_height="173dp"
+                android:layout_marginTop="40dp"
+                android:background="@android:color/transparent"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/prelayingText"
+                app:shapeAppearanceOverlay="@style/RoundedImageStyle"
+                app:srcCompat="@drawable/molt" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imageButton2"
+                android:layout_width="193dp"
+                android:layout_height="173dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="12dp"
+                android:background="@android:color/transparent"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/imageButton"
+                app:layout_constraintTop_toBottomOf="@+id/henHeader"
+                app:shapeAppearanceOverlay="@style/RoundedImageStyle"
+                app:srcCompat="@drawable/grower" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imageButton"
+                android:layout_width="193dp"
+                android:layout_height="173dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="5dp"
+                android:background="@android:color/transparent"
+                app:shapeAppearanceOverlay="@style/RoundedImageStyle"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toStartOf="@+id/imageButton2"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/henHeader"
+                app:srcCompat="@drawable/chick" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imageButton4"
+                android:layout_width="193dp"
+                android:layout_height="173dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="12dp"
+                android:background="@android:color/transparent"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="@+id/imageButton3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageButton3"
+                app:layout_constraintTop_toBottomOf="@+id/growerText"
+                app:shapeAppearanceOverlay="@style/RoundedImageStyle"
+                app:srcCompat="@drawable/adult_hen" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imageButton3"
+                android:layout_width="193dp"
+                android:layout_height="173dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="5dp"
+                android:background="@android:color/transparent"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toStartOf="@+id/imageButton4"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/chickText"
+                app:shapeAppearanceOverlay="@style/RoundedImageStyle"
+                app:srcCompat="@drawable/prelaying" />
+
+            <TextView
+                android:id="@+id/growerText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="12dp"
+                android:text="Grower (6 - 18 Weeks)"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/chickText"
+                app:layout_constraintTop_toBottomOf="@+id/imageButton2" />
+
+            <TextView
+                android:id="@+id/chickText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="10dp"
+                android:text="Chick (0 - 6 Weeks)"
+                android:textAllCaps="true"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toStartOf="@+id/growerText"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageButton" />
+
+            <TextView
+                android:id="@+id/prelayingText"
+                android:layout_width="132dp"
+                android:layout_height="39dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="10dp"
+                android:text="Pre-laying \n (18 - 20 Weeks)"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toStartOf="@+id/adultText"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageButton3" />
+
+            <TextView
+                android:id="@+id/adultText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="12dp"
+                android:text="Adult (20+ Weeks)"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/prelayingText"
+                app:layout_constraintTop_toBottomOf="@+id/imageButton4" />
+
+            <TextView
+                android:id="@+id/moltText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Molt (Post Laying)"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageButton6" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/page1"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -28,30 +197,31 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageButton
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/henButton"
                 android:layout_width="350dp"
                 android:layout_height="230dp"
                 android:layout_marginTop="48dp"
                 android:background="@drawable/button_ripple"
-                android:scaleType="fitCenter"
+                android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.495"
+                app:layout_constraintHorizontal_bias="0.491"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/selectBirdType"
+                app:shapeAppearanceOverlay="@style/RoundedImageStyle"
                 app:srcCompat="@drawable/hen" />
 
-            <ImageButton
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/quailButton"
                 android:layout_width="350dp"
                 android:layout_height="230dp"
                 android:layout_marginTop="16dp"
-                android:background="@drawable/button_ripple"
-                android:scaleType="fitCenter"
+                android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.495"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView4"
+                app:shapeAppearanceOverlay="@style/RoundedImageStyle"
                 app:srcCompat="@drawable/quail" />
 
             <TextView
@@ -84,21 +254,169 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/page2"
+            android:id="@+id/page3"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/colorBackground">
 
             <TextView
-                android:id="@+id/textView7"
+                android:id="@+id/quailHeader"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="132dp"
+                android:layout_marginTop="48dp"
                 android:text="Select Growth Stage"
+                android:textAllCaps="true"
+                android:textSize="24sp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintHorizontal_bias="0.496"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/quailMoltBtn"
+                android:layout_width="193dp"
+                android:layout_height="173dp"
+                android:layout_marginTop="40dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/quailPrelayingText"
+                app:shapeAppearanceOverlay="@style/RoundedImageStyle"
+                app:srcCompat="@drawable/quail_molt" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/quailGrowerBtn"
+                android:layout_width="193dp"
+                android:layout_height="173dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="12dp"
+                android:background="@android:color/transparent"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/quailChickBtn"
+                app:layout_constraintTop_toBottomOf="@+id/quailHeader"
+                app:shapeAppearanceOverlay="@style/RoundedImageStyle"
+                app:srcCompat="@drawable/quail_grower" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/quailChickBtn"
+                android:layout_width="193dp"
+                android:layout_height="173dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="5dp"
+                android:background="@android:color/transparent"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toStartOf="@+id/quailGrowerBtn"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/quailHeader"
+                app:shapeAppearanceOverlay="@style/RoundedImageStyle"
+                app:srcCompat="@drawable/quail_chick" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/quailAdultBtn"
+                android:layout_width="193dp"
+                android:layout_height="173dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="12dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="@+id/quailPrelayingBtn"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/quailPrelayingBtn"
+                app:layout_constraintTop_toBottomOf="@+id/quailGrowerText"
+                app:shapeAppearanceOverlay="@style/RoundedImageStyle"
+                app:srcCompat="@drawable/quail_adult" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/quailPrelayingBtn"
+                android:layout_width="193dp"
+                android:layout_height="173dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="5dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toStartOf="@+id/quailAdultBtn"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/quailChickText"
+                app:shapeAppearanceOverlay="@style/RoundedImageStyle"
+                app:srcCompat="@drawable/quail_prelaying" />
+
+            <TextView
+                android:id="@+id/quailGrowerText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="12dp"
+                android:text="Grower (3 - 6 Weeks)"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/quailChickText"
+                app:layout_constraintTop_toBottomOf="@+id/quailGrowerBtn" />
+
+            <TextView
+                android:id="@+id/quailChickText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="10dp"
+                android:text="Chick (0 - 3 Weeks)"
+                android:textAllCaps="true"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toStartOf="@+id/quailGrowerText"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/quailChickBtn" />
+
+            <TextView
+                android:id="@+id/quailPrelayingText"
+                android:layout_width="132dp"
+                android:layout_height="39dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="10dp"
+                android:text="Pre-laying \n (6 - 8 Weeks)"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toStartOf="@+id/quailAdultText"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/quailPrelayingBtn" />
+
+            <TextView
+                android:id="@+id/quailAdultText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="12dp"
+                android:text="Adult (8+ Weeks)"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/quailPrelayingText"
+                app:layout_constraintTop_toBottomOf="@+id/quailAdultBtn" />
+
+            <TextView
+                android:id="@+id/quailmoltText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Molt (Post Laying)"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/quailMoltBtn" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ViewFlipper>
