@@ -43,13 +43,14 @@ public class ScheduleModeFragment extends Fragment {
         binding = CustomizeScheduleModeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         sharedPreferences = getContext().getSharedPreferences("UserPrefs", MODE_PRIVATE);
-        generateSchedule();
+        setupListener();
 
         return root;
     }
 
-    public void generateSchedule() {
+    public void setupListener() {
         binding.addBtn.setOnClickListener(v -> {
+            // Scale animation
             Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.scale_animation);
             binding.addBtn.startAnimation(animation);
 
@@ -88,8 +89,39 @@ public class ScheduleModeFragment extends Fragment {
                 timePickerDialog.show();
             });
 
+//            binding.minusBtn.setOnClickListener(v1 -> {
+//                if (index >= 0 && index < selectedTimes.size()) {
+//                    binding.scheduleContainer.removeView(row);
+//                    selectedTimes.remove(index);
+//                    scheduleCount--;
+//                }
+//                Log.d("CURRENT INDEX", "index: " + index);
+//            });
+
             binding.scheduleContainer.addView(row);
         });
+        binding.submitBtn.setOnClickListener(v -> {
+            animateScale(v, () -> {
+                getActivity().finish();
+                Toast.makeText(getContext(), "Scheduled Successfully", Toast.LENGTH_SHORT).show();
+            });
+        });
+    }
+
+    public void animateScale(View view, Runnable onAnimationEnd) {
+        view.animate()
+                .scaleX(0.95f)
+                .scaleY(0.95f)
+                .setDuration(100)
+                .withEndAction(() -> {
+                    view.animate()
+                            .scaleX(1f)
+                            .scaleY(1f)
+                            .setDuration(100)
+                            .withEndAction(onAnimationEnd)
+                            .start();
+                })
+                .start();
     }
 
     @Override
