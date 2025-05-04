@@ -22,6 +22,8 @@ import com.ivrndev.poultry_iot.ScheduleModeActivity;
 import com.ivrndev.poultry_iot.SmartFeedingActivity;
 import com.ivrndev.poultry_iot.databinding.FragmentCustomizeBinding;
 
+import java.util.Locale;
+
 public class CustomizeFragment extends Fragment {
 
     private FragmentCustomizeBinding binding;
@@ -104,12 +106,20 @@ public class CustomizeFragment extends Fragment {
                 TimePickerDialog timePickerDialog = new TimePickerDialog(
                         getContext(),
                         (view, hourOfDay, minute) -> {
+                            int totalSeconds = hourOfDay;
+                            String timeInSeconds = String.format(Locale.getDefault(), "%d", totalSeconds);
+
                             animateScale(v, () -> {
-                                sharedPreferences.edit()
-                                        .putString("mode", "interval_mode")
-                                        .remove("bird_type")
-                                        .remove("growth_stage")
-                                        .apply();
+                                customizeViewModel.setMode(timeInSeconds, isSuccess -> {
+                                    sharedPreferences = getContext().getSharedPreferences("UserPrefs", MODE_PRIVATE);
+                                    sharedPreferences.edit()
+                                            .putString("mode", "interval_mode")
+                                            .remove("bird_type")
+                                            .remove("growth_stage")
+                                            .apply();
+                                    String formattedTime = String.format(Locale.getDefault(), "%02d:00", hourOfDay);
+                                    Toast.makeText(getContext(), "Interval mode set to " + formattedTime, Toast.LENGTH_SHORT).show();
+                                });
                             });
                         },
                         1,
@@ -119,7 +129,6 @@ public class CustomizeFragment extends Fragment {
                 timePickerDialog.show();
             }
         });
-
     }
 
     public void fetchSelectedMode() {
