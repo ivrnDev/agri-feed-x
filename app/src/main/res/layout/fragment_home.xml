@@ -14,40 +14,44 @@
         android:padding="8dp"
         android:scaleType="centerCrop"
         android:src="@android:drawable/ic_lock_power_off"
-        app:tint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.901"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.83" />
+        app:layout_constraintVertical_bias="0.83"
+        app:tint="@color/white" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/refillBtn"
         android:layout_width="159dp"
         android:layout_height="112dp"
+        android:layout_marginTop="25dp"
         android:background="@drawable/refill_button_circular"
         android:text="@string/refill_button"
         android:textSize="17sp"
         android:textStyle="bold"
         app:icon="@drawable/icon_refresh"
-        app:iconTint="@color/white"
         app:iconGravity="top"
         app:iconPadding="1dp"
         app:iconSize="70dp"
-        app:rippleColor="@color/white"
+        app:iconTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.592" />
+        app:layout_constraintVertical_bias="0.5"
+        app:rippleColor="@color/white" />
 
     <com.ekn.gruzer.gaugelibrary.HalfGauge
         android:id="@+id/foodLevelSensor"
-        android:layout_width="325dp"
+        android:layout_width="0dp"
         android:layout_height="342dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="25dp"
+        app:layout_constraintBottom_toTopOf="@+id/refillBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
