@@ -67,8 +67,10 @@ public class SmartFeedingFragment extends Fragment {
     private void setupGrowthStage(View view, String stage) {
         view.setOnClickListener(v -> {
             animateScale(v, () -> {
-                sharedPreferences.edit().putString("mode", "smart_mode").apply();
-                sharedPreferences.edit().putString("growth_stage", stage).apply();
+                sharedPreferences.edit()
+                        .putString("mode", "smart_mode")
+                        .putString("growth_stage", stage)
+                        .apply();
                 getActivity().finish();
             });
         });
