@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
 
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -16,8 +17,8 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:layout_width="441dp"
-            android:layout_height="413dp"
+            android:layout_width="match_parent"
+            android:layout_height="373dp"
             android:scaleType="fitXY"
             android:src="@drawable/curve_top" />
 
@@ -27,34 +28,31 @@
 
             <TextView
                 android:id="@+id/textView"
-                android:layout_width="204dp"
-                android:layout_height="97dp"
-                android:layout_marginTop="40dp"
+                android:layout_width="171dp"
+                android:layout_height="90dp"
+                android:layout_marginTop="36dp"
+                android:layout_marginEnd="15dp"
                 android:fontFamily="@font/aclonica"
-                android:text="AgriFeed \n X"
                 android:letterSpacing="0.05"
+                android:text="AgriFeed \n X"
                 android:textAlignment="center"
                 android:textAllCaps="true"
                 android:textColor="@color/white"
-                android:textSize="30sp"
+                android:textSize="28sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/imageView"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="214dp"
-                android:layout_height="183dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="62dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                android:layout_width="173dp"
+                android:layout_height="145dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="24dp"
+                app:layout_constraintEnd_toStartOf="@+id/textView"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.002"
                 app:srcCompat="@drawable/poultry_icon" />
 
 
@@ -62,8 +60,9 @@
                 android:id="@+id/textView2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="235dp"
+                android:layout_marginTop="188dp"
                 android:text="Login"
+                android:textColor="@color/white"
                 android:textAlignment="center"
                 android:textSize="30sp"
                 android:textStyle="bold"
@@ -78,8 +77,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="25dp"
                 android:layout_marginEnd="40dp"
+                android:textColorHint="@color/colorSurface"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textView2">
@@ -89,6 +89,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Username"
+                    android:textColor="@color/colorSurface"
                     android:inputType="textEmailAddress" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -101,8 +102,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
-                android:layout_marginTop="35dp"
+                android:layout_marginTop="25dp"
                 android:layout_marginEnd="40dp"
+                android:textColorHint="@color/colorSurface"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/userNameLayout">
@@ -112,6 +114,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Password"
+                    android:textColorHint="@color/colorSurface"
                     android:inputType="textPassword" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -120,9 +123,10 @@
                 android:id="@+id/signupLink"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="28dp"
+                android:layout_marginTop="15dp"
                 android:layout_weight="1"
                 android:text="Don't Have an Account? Sign Up"
+                android:textColor="@color/colorSurface"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.497"
@@ -134,15 +138,17 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
-                android:layout_marginTop="92dp"
                 android:layout_marginEnd="40dp"
+
                 android:background="@drawable/button_ripple"
                 android:text="LOGIN"
                 android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/passwordLayout" />
+                app:layout_constraintTop_toBottomOf="@+id/signupLink"
+                app:layout_constraintVertical_bias="0.138" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>
