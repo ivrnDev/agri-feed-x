@@ -83,14 +83,26 @@ public class CustomizeFragment extends Fragment {
         binding.scheduleModeBtn.setOnClickListener(v -> {
             String currentMode = sharedPreferences.getString("mode", null);
             if (!"schedule_mode".equals(currentMode)) {
-                animateScale(v, () -> sharedPreferences.edit().putString("mode", "schedule_mode").apply());
+                animateScale(v, () -> {
+                    sharedPreferences.edit()
+                            .putString("mode", "schedule_mode")
+                            .remove("bird_type")
+                            .remove("growth_stage")
+                            .apply();
+                });
             }
         });
 
         binding.intervalModeBtn.setOnClickListener(v -> {
             String currentMode = sharedPreferences.getString("mode", null);
             if (!"interval_mode".equals(currentMode)) {
-                animateScale(v, () -> sharedPreferences.edit().putString("mode", "interval_mode").apply());
+                animateScale(v, () -> {
+                    sharedPreferences.edit()
+                            .putString("mode", "interval_mode")
+                            .remove("bird_type")
+                            .remove("growth_stage")
+                            .apply();
+                });
             }
         });
 
