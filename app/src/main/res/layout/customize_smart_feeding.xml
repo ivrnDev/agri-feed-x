@@ -104,7 +104,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/imageButton6"
+                android:id="@+id/henMoltBtn"
                 android:layout_width="193dp"
                 android:layout_height="173dp"
                 android:layout_marginTop="40dp"
@@ -118,7 +118,7 @@
                 app:srcCompat="@drawable/molt" />
 
             <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/imageButton2"
+                android:id="@+id/henGrowerBtn"
                 android:layout_width="193dp"
                 android:layout_height="173dp"
                 android:layout_marginStart="5dp"
@@ -128,13 +128,13 @@
                 android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/imageButton"
+                app:layout_constraintStart_toEndOf="@+id/henChickBtn"
                 app:layout_constraintTop_toBottomOf="@+id/henHeader"
                 app:shapeAppearanceOverlay="@style/RoundedImageStyle"
                 app:srcCompat="@drawable/grower" />
 
             <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/imageButton"
+                android:id="@+id/henChickBtn"
                 android:layout_width="193dp"
                 android:layout_height="173dp"
                 android:layout_marginStart="12dp"
@@ -142,7 +142,7 @@
                 android:layout_marginEnd="5dp"
                 android:background="@android:color/transparent"
                 android:scaleType="centerCrop"
-                app:layout_constraintEnd_toStartOf="@+id/imageButton2"
+                app:layout_constraintEnd_toStartOf="@+id/henGrowerBtn"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/henHeader"
@@ -150,7 +150,7 @@
                 app:srcCompat="@drawable/chick" />
 
             <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/imageButton4"
+                android:id="@+id/henAdultBtn"
                 android:layout_width="193dp"
                 android:layout_height="173dp"
                 android:layout_marginStart="5dp"
@@ -158,15 +158,15 @@
                 android:layout_marginEnd="12dp"
                 android:background="@android:color/transparent"
                 android:scaleType="centerCrop"
-                app:layout_constraintBottom_toBottomOf="@+id/imageButton3"
+                app:layout_constraintBottom_toBottomOf="@+id/henPrelayingBtn"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imageButton3"
+                app:layout_constraintStart_toEndOf="@+id/henPrelayingBtn"
                 app:layout_constraintTop_toBottomOf="@+id/growerText"
                 app:shapeAppearanceOverlay="@style/RoundedImageStyle"
                 app:srcCompat="@drawable/adult_hen" />
 
             <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/imageButton3"
+                android:id="@+id/henPrelayingBtn"
                 android:layout_width="193dp"
                 android:layout_height="173dp"
                 android:layout_marginStart="12dp"
@@ -174,7 +174,7 @@
                 android:layout_marginEnd="5dp"
                 android:background="@android:color/transparent"
                 android:scaleType="centerCrop"
-                app:layout_constraintEnd_toStartOf="@+id/imageButton4"
+                app:layout_constraintEnd_toStartOf="@+id/henAdultBtn"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/chickText"
                 app:shapeAppearanceOverlay="@style/RoundedImageStyle"
@@ -193,7 +193,7 @@
                 android:textSize="15sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/chickText"
-                app:layout_constraintTop_toBottomOf="@+id/imageButton2" />
+                app:layout_constraintTop_toBottomOf="@+id/henGrowerBtn" />
 
             <TextView
                 android:id="@+id/chickText"
@@ -206,7 +206,7 @@
                 android:textSize="15sp"
                 app:layout_constraintEnd_toStartOf="@+id/growerText"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageButton" />
+                app:layout_constraintTop_toBottomOf="@+id/henChickBtn" />
 
             <TextView
                 android:id="@+id/prelayingText"
@@ -220,7 +220,7 @@
                 android:textSize="15sp"
                 app:layout_constraintEnd_toStartOf="@+id/adultText"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageButton3" />
+                app:layout_constraintTop_toBottomOf="@+id/henPrelayingBtn" />
 
             <TextView
                 android:id="@+id/adultText"
@@ -235,7 +235,7 @@
                 android:textSize="15sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/prelayingText"
-                app:layout_constraintTop_toBottomOf="@+id/imageButton4" />
+                app:layout_constraintTop_toBottomOf="@+id/henAdultBtn" />
 
             <TextView
                 android:id="@+id/moltText"
@@ -248,7 +248,7 @@
                 android:textSize="15sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageButton6" />
+                app:layout_constraintTop_toBottomOf="@+id/henMoltBtn" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
