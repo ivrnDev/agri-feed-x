@@ -38,8 +38,6 @@ public class SmartFeedingFragment extends Fragment {
     }
 
     public void setupListener(SmartFeedingViewModel smartFeedingViewModel) {
-        binding.viewFlipper.setInAnimation(requireContext(), android.R.anim.slide_in_left);
-
         binding.henButton.setOnClickListener(v -> {
             animateScale(v, () -> {
                 sharedPreferences.edit().putString("bird_type", "hen").apply();
