@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -42,12 +44,15 @@ public class ScheduleModeFragment extends Fragment {
         View root = binding.getRoot();
         sharedPreferences = getContext().getSharedPreferences("UserPrefs", MODE_PRIVATE);
         generateSchedule();
-        
+
         return root;
     }
 
     public void generateSchedule() {
         binding.addBtn.setOnClickListener(v -> {
+            Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.scale_animation);
+            binding.addBtn.startAnimation(animation);
+
             if (scheduleCount == 10) {
                 Toast.makeText(getContext(), "Maximum of 10 cycle allowed", Toast.LENGTH_SHORT).show();
                 return;
