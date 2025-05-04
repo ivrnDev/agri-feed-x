@@ -17,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.ivrndev.poultry_iot.IntervalModeActivity;
 import com.ivrndev.poultry_iot.LoginActivity;
 import com.ivrndev.poultry_iot.R;
 import com.ivrndev.poultry_iot.SmartFeedingActivity;
@@ -104,6 +105,8 @@ public class CustomizeFragment extends Fragment {
                             .remove("growth_stage")
                             .apply();
                 });
+                Intent intent = new Intent(getActivity(), IntervalModeActivity.class);
+                startActivity(intent);
             }
         });
 
