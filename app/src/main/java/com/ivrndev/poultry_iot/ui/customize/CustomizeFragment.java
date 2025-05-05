@@ -93,11 +93,6 @@ public class CustomizeFragment extends Fragment {
             String currentMode = sharedPreferences.getString("mode", null);
             if (!"schedule_mode".equals(currentMode)) {
                 animateScale(v, () -> {
-                    sharedPreferences.edit()
-                            .putString("mode", "schedule_mode")
-                            .remove("bird_type")
-                            .remove("growth_stage")
-                            .apply();
                     Intent intent = new Intent(getActivity(), ScheduleModeActivity.class);
                     startActivity(intent);
                 });

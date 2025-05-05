@@ -37,20 +37,19 @@ public class ScheduleModeFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        SmartFeedingViewModel smartFeedingViewModel =
-                new ViewModelProvider(this).get(SmartFeedingViewModel.class);
+        ScheduleModeViewModel scheduleModeViewModel =
+                new ViewModelProvider(this).get(ScheduleModeViewModel.class);
 
         binding = CustomizeScheduleModeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         sharedPreferences = getContext().getSharedPreferences("UserPrefs", MODE_PRIVATE);
-        setupListener();
+        setupListener(scheduleModeViewModel);
 
         return root;
     }
 
-    public void setupListener() {
+    public void setupListener(ScheduleModeViewModel scheduleModeViewModel) {
         binding.addBtn.setOnClickListener(v -> {
-            // Scale animation
             Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.scale_animation);
             binding.addBtn.startAnimation(animation);
 
@@ -101,10 +100,35 @@ public class ScheduleModeFragment extends Fragment {
             binding.scheduleContainer.addView(row);
         });
         binding.submitBtn.setOnClickListener(v -> {
-            animateScale(v, () -> {
-                getActivity().finish();
+            if (selectedTimes.size() == 0 || selectedTimes.get(0).isEmpty()) {
+                Toast.makeText(getContext(), "Please select at least one time", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            StringBuilder scheduleData = new StringBuilder();
+            for (String time : selectedTimes) {
+                if (!time.isEmpty()) {
+                    if (scheduleData.length() > 0) scheduleData.append(",");
+                    scheduleData.append(time);
+                }
+            }
+
+            scheduleModeViewModel.setupSchedule(scheduleData.toString(), isSuccess -> {
+                if (!isSuccess) {
+                    Toast.makeText(getContext(), "Failed to schedule", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                sharedPreferences.edit()
+                        .putString("mode", "schedule_mode")
+                        .remove("bird_type")
+                        .remove("growth_stage")
+                        .apply();
                 Toast.makeText(getContext(), "Scheduled Successfully", Toast.LENGTH_SHORT).show();
             });
+
+            getActivity().finish();
+
         });
     }
 
