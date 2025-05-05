@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -17,17 +18,18 @@ import com.ivrndev.poultry_iot.databinding.CustomizeSmartFeedingBinding;
 public class SmartFeedingFragment extends Fragment {
     private CustomizeSmartFeedingBinding binding;
     private SharedPreferences sharedPreferences;
+    private SmartFeedingViewModel smartFeedingViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        SmartFeedingViewModel smartFeedingViewModel =
+        smartFeedingViewModel =
                 new ViewModelProvider(this).get(SmartFeedingViewModel.class);
 
         binding = CustomizeSmartFeedingBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         sharedPreferences = getContext().getSharedPreferences("UserPrefs", MODE_PRIVATE);
 
-        setupListener(smartFeedingViewModel);
+        setupListener();
         return root;
     }
 
@@ -37,7 +39,7 @@ public class SmartFeedingFragment extends Fragment {
         binding = null;
     }
 
-    public void setupListener(SmartFeedingViewModel smartFeedingViewModel) {
+    public void setupListener() {
         binding.henButton.setOnClickListener(v -> {
             animateScale(v, () -> {
                 sharedPreferences.edit().putString("bird_type", "hen").apply();
@@ -67,13 +69,45 @@ public class SmartFeedingFragment extends Fragment {
     private void setupGrowthStage(View view, String stage) {
         view.setOnClickListener(v -> {
             animateScale(v, () -> {
-                sharedPreferences.edit()
-                        .putString("mode", "smart_mode")
-                        .putString("growth_stage", stage)
-                        .apply();
-                getActivity().finish();
+                int time = selectRecommendedSettings(stage);
+                if (time != -1) {
+                    smartFeedingViewModel.setMode(String.valueOf(time), success -> {
+                        sharedPreferences.edit()
+                                .putString("mode", "smart_mode")
+                                .putString("growth_stage", stage)
+                                .apply();
+                        Toast.makeText(getContext(), "Smart mode has been activated", Toast.LENGTH_SHORT).show();
+                        getActivity().finish();
+                    });
+                }
             });
         });
+    }
+
+    public int selectRecommendedSettings(String stage) {
+        switch (stage) {
+            case "hen_chick":
+                return 3;
+            case "hen_grower":
+                return 4;
+            case "hen_prelaying":
+                return 5;
+            case "hen_adult":
+                return 6;
+            case "hen_molt":
+                return 8;
+            case "quail_chick":
+                return 2;
+            case "quail_grower":
+                return 3;
+            case "quail_prelaying":
+                return 4;
+            case "quail_adult":
+                return 6;
+            case "quail_molt":
+                return 8;
+        }
+        return -1;
     }
 
     public void setPage(int page) {
