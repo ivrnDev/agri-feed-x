@@ -89,7 +89,7 @@ public class HomeFragment extends Fragment {
             foodLevel.setNeedleColor(Color.BLACK);
         }
 
-        homeViewModel.startPeriodicStorageUpdates();
+        homeViewModel.fetchCurrentStorage();
         homeViewModel.getStorageValue().observe(getViewLifecycleOwner(), value -> {
             Log.d("Food Level", "setupFoodLevel: " + value);
             foodLevel.setValue(value);

@@ -83,7 +83,7 @@ public class ScheduleModeFragment extends Fragment {
                             selectTimeButton.setText(time);
                             selectedTimes.set(index, time);
                         },
-                        1, 0, false
+                        1, 0, true
                 );
                 timePickerDialog.show();
             });

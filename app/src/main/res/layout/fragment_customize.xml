@@ -76,6 +76,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/scheduleModeBtn"
+        android:visibility="gone"
         android:layout_width="0dp"
         android:layout_height="140dp"
         android:layout_marginStart="35dp"
