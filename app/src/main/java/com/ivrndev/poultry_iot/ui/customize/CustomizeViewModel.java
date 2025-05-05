@@ -17,7 +17,7 @@ import retrofit2.Response;
 
 public class CustomizeViewModel extends ViewModel {
     private BlynkApiService blynkApiService = RetrofitClient.getRetrofitInstance().create(BlynkApiService.class);
-    private final String token = "-f79MI8QYI1PWyLqtSvh6NWJ5giBVA_N";
+    private final String token = "zdFJCdIFTD7SbSffjqHU1uDhlFBTRCQv";
 
     public CustomizeViewModel() {
     }
