@@ -23,8 +23,8 @@ public class HomeViewModel extends ViewModel {
     private final BlynkApiService blynkApiService = RetrofitClient.getRetrofitInstance().create(BlynkApiService.class);
     private final String token = "zdFJCdIFTD7SbSffjqHU1uDhlFBTRCQv";
 
-//    private Handler handler = new Handler(Looper.getMainLooper());
-//    private Runnable updateStorageRunnable;
+    private Handler handler = new Handler(Looper.getMainLooper());
+    private Runnable updateStorageRunnable;
 
     public LiveData<String> getPowerValue() {
         return powerValue;
@@ -139,22 +139,22 @@ public class HomeViewModel extends ViewModel {
         });
     }
 
-//    public void startPeriodicStorageUpdates() {
-//        updateStorageRunnable = new Runnable() {
-//            @Override
-//            public void run() {
-//                fetchCurrentStorage();
-//                handler.postDelayed(this, 1000);
-//            }
-//        };
-//        handler.post(updateStorageRunnable);
-//    }
-//
-//    public void stopPeriodicStorageUpdates() {
-//        if (updateStorageRunnable != null) {
-//            handler.removeCallbacks(updateStorageRunnable);
-//        }
-//    }
+    public void startPeriodicStorageUpdates() {
+        updateStorageRunnable = new Runnable() {
+            @Override
+            public void run() {
+                fetchCurrentStorage();
+                handler.postDelayed(this, 6000);
+            }
+        };
+        handler.post(updateStorageRunnable);
+    }
+
+    public void stopPeriodicStorageUpdates() {
+        if (updateStorageRunnable != null) {
+            handler.removeCallbacks(updateStorageRunnable);
+        }
+    }
 
 
 }

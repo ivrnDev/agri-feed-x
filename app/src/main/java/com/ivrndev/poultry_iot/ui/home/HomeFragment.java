@@ -28,6 +28,7 @@ import java.util.Map;
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
+    private HomeViewModel homeViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -35,8 +36,9 @@ public class HomeFragment extends Fragment {
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+        this.homeViewModel = homeViewModel;
 
-        setupFoodLevel(homeViewModel);
+        setupFoodLevel();
 
         observePowerValue(homeViewModel);
         setupListener(homeViewModel);
@@ -51,7 +53,7 @@ public class HomeFragment extends Fragment {
         binding = null;
     }
 
-    private void setupFoodLevel(HomeViewModel homeViewModel) {
+    private void setupFoodLevel() {
         var foodLevel = binding.foodLevelSensor;
         foodLevel.enableAnimation(true);
         foodLevel.setValue(99);
@@ -89,7 +91,6 @@ public class HomeFragment extends Fragment {
             foodLevel.setNeedleColor(Color.BLACK);
         }
 
-        homeViewModel.fetchCurrentStorage();
         homeViewModel.getStorageValue().observe(getViewLifecycleOwner(), value -> {
             Log.d("Food Level", "setupFoodLevel: " + value);
             foodLevel.setValue(value);
@@ -127,6 +128,18 @@ public class HomeFragment extends Fragment {
             }
 
         });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        homeViewModel.startPeriodicStorageUpdates();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        homeViewModel.stopPeriodicStorageUpdates();
     }
 
 
