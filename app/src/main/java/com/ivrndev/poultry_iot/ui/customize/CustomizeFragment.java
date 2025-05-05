@@ -49,13 +49,19 @@ public class CustomizeFragment extends Fragment {
     public void setupListener(CustomizeViewModel customizeViewModel) {
         binding.resetBtn.setOnClickListener(v -> {
             animateScale(v, () -> {
-                sharedPreferences.edit()
-                        .remove("bird_type")
-                        .remove("growth_stage")
-                        .putString("mode", "interval_mode")
-                        .apply();
-                fetchSelectedMode();
-                Toast.makeText(getContext(), "Successfully Reset to default settings", Toast.LENGTH_LONG).show();
+                customizeViewModel.setMode("3", isSuccess -> {
+                    if (isSuccess) {
+                        Toast.makeText(getContext(), "Successfully reset to default settings", Toast.LENGTH_LONG).show();
+                        sharedPreferences.edit()
+                                .remove("bird_type")
+                                .remove("growth_stage")
+                                .putString("mode", "interval_mode")
+                                .apply();
+                        fetchSelectedMode();
+                    } else {
+                        Toast.makeText(getContext(), "Failed to reset settings", Toast.LENGTH_LONG).show();
+                    }
+                });
             });
 
         });
