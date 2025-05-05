@@ -1,5 +1,7 @@
 package com.ivrndev.poultry_iot.ui.home;
 
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 
 import androidx.lifecycle.LiveData;
@@ -16,11 +18,20 @@ import retrofit2.Response;
 public class HomeViewModel extends ViewModel {
     private final MutableLiveData<String> powerValue = new MutableLiveData<>();
     private final MutableLiveData<String> refillValue = new MutableLiveData<>();
+
+    private final MutableLiveData<Double> storageValue = new MutableLiveData<>();
     private final BlynkApiService blynkApiService = RetrofitClient.getRetrofitInstance().create(BlynkApiService.class);
     private final String token = "-f79MI8QYI1PWyLqtSvh6NWJ5giBVA_N";
 
+    private Handler handler = new Handler(Looper.getMainLooper());
+    private Runnable updateStorageRunnable;
+
     public LiveData<String> getPowerValue() {
         return powerValue;
+    }
+
+    public LiveData<Double> getStorageValue() {
+        return storageValue;
     }
 
     public void fetchCurrentPowerState() {
@@ -104,4 +115,46 @@ public class HomeViewModel extends ViewModel {
             }
         });
     }
+
+    public void fetchCurrentStorage() {
+        blynkApiService.getPinValueDouble(token, "V6").enqueue(new Callback<Double>() {
+            @Override
+            public void onResponse(Call<Double> call, Response<Double> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    Double storage = response.body();
+                    if (storage != null) {
+                        storageValue.setValue(storage);
+                    } else {
+                        Log.e("Storage", "Storage value is null");
+                    }
+                } else {
+                    Log.e("Storage", "Failed to fetch storage value: " + response.message());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Double> call, Throwable t) {
+                Log.e("Refill", "Error updating refill state", t);
+            }
+        });
+    }
+
+    public void startPeriodicStorageUpdates() {
+        updateStorageRunnable = new Runnable() {
+            @Override
+            public void run() {
+                fetchCurrentStorage();
+                handler.postDelayed(this, 1000);
+            }
+        };
+        handler.post(updateStorageRunnable);
+    }
+
+    public void stopPeriodicStorageUpdates() {
+        if (updateStorageRunnable != null) {
+            handler.removeCallbacks(updateStorageRunnable);
+        }
+    }
+
+
 }

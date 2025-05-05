@@ -36,7 +36,7 @@ public class HomeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        setupFoodLevel();
+        setupFoodLevel(homeViewModel);
 
         observePowerValue(homeViewModel);
         setupListener(homeViewModel);
@@ -51,7 +51,7 @@ public class HomeFragment extends Fragment {
         binding = null;
     }
 
-    private void setupFoodLevel() {
+    private void setupFoodLevel(HomeViewModel homeViewModel) {
         var foodLevel = binding.foodLevelSensor;
         foodLevel.enableAnimation(true);
         foodLevel.setValue(99);
@@ -88,6 +88,12 @@ public class HomeFragment extends Fragment {
             foodLevel.setValueColor(Color.BLACK);
             foodLevel.setNeedleColor(Color.BLACK);
         }
+
+        homeViewModel.startPeriodicStorageUpdates();
+        homeViewModel.getStorageValue().observe(getViewLifecycleOwner(), value -> {
+            Log.d("Food Level", "setupFoodLevel: " + value);
+            foodLevel.setValue(value);
+        });
     }
 
     private void observePowerValue(HomeViewModel homeViewModel) {
