@@ -152,9 +152,9 @@ public class CustomizeFragment extends Fragment {
             case "interval_mode":
                 selectedView = binding.intervalModeBtn;
                 break;
-//            case "schedule_mode":
-//                selectedView = binding.scheduleModeBtn;
-//                break;
+            case "schedule_mode":
+                selectedView = binding.scheduleModeBtn;
+                break;
         }
 
         if (selectedView != null) {

@@ -99,7 +99,7 @@ public class HomeViewModel extends ViewModel {
         if (currentValue == null) return;
         String newValue = currentValue.equals("1") ? "0" : "1";
 
-        blynkApiService.updatePinValue(token, "V4", newValue).enqueue(new Callback<String>() {
+        blynkApiService.updatePinValue(token, "V4", "1").enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 if (response.isSuccessful()) {

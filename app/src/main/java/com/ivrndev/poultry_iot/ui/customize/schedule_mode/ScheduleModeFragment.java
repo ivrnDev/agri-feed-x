@@ -99,6 +99,7 @@ public class ScheduleModeFragment extends Fragment {
 
             binding.scheduleContainer.addView(row);
         });
+        binding.addBtn.bringToFront();
         binding.submitBtn.setOnClickListener(v -> {
             if (selectedTimes.size() == 0 || selectedTimes.get(0).isEmpty()) {
                 Toast.makeText(getContext(), "Please select at least one time", Toast.LENGTH_SHORT).show();
